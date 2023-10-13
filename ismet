@@ -1,0 +1,43 @@
+public class Insuree
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Gender { get; set; }
+    public int NumberOfAccidents { get; set; }
+    // Other properties...
+}
+
+public class InsureeController : Controller
+{
+    // ... other actions ...
+
+    public decimal CalculateQuote(Insuree insuree)
+    {
+        decimal baseQuote = 1000; // Base insurance cost
+
+        // Calculate additional costs based on age
+        if (insuree.Age < 25)
+        {
+            baseQuote += 500; // Young drivers pay more
+        }
+
+        // Calculate additional costs based on gender
+        if (insuree.Gender == "Male")
+        {
+            baseQuote += 300; // Male drivers pay more (example)
+        }
+
+        // Calculate additional costs based on the number of accidents
+        if (insuree.NumberOfAccidents > 0)
+        {
+            baseQuote += insuree.NumberOfAccidents * 200; // $200 for each accident (example)
+        }
+
+        // You can add more factors and calculations as needed...
+
+        return baseQuote;
+    }
+}
+
+ 
